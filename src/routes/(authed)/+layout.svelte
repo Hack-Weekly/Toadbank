@@ -1,5 +1,5 @@
 <script>
-    import "../app.css";
+    import "../../app.css";
     import { writable } from 'svelte/store';
 
     // Create a writable store
