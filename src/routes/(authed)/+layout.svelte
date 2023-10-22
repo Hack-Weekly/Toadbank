@@ -1,7 +1,11 @@
 <script>
     import "../../app.css";
+    import { goto } from "$app/navigation";
     import { writable } from 'svelte/store';
-
+    async function logout () {
+    const response = await fetch("/auth/logout", { method: "DELETE" })
+        goto(response.url)
+    }
     // Create a writable store
     const isOpen = writable(false);
 </script>
@@ -63,6 +67,15 @@
                 </svg>
                 <span class="mt-0.5 pr-1">Contacts</span>     
             </li>
+            <button class="flex gap-3 text-dark bg-white py-2 px-3 w-4/5" on:click={logout}>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                    <path d="M9 12h12l-3 -3" />
+                    <path d="M18 15l3 -3" />
+                  </svg>
+                Logout
+            </button>
         </ul>
     </div>
 </aside>
