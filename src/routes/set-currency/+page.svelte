@@ -8,6 +8,9 @@
 </script>
 
 <form method="post" use:enhance>
-    <input type="text" name="currency" class="bg-black text-white p-3 text-xl">
+    <!-- <input type="text" name="currency" class="bg-black text-white p-3 text-xl"> -->
+    <select name = "currency">
+      <option value="$" >$</option>
+    </select>
     <button type="submit" class="bg-green-500 text-white p-3">Submit</button>
 </form>

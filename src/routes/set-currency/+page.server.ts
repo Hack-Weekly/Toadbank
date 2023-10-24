@@ -6,19 +6,23 @@ export const actions: Actions = {
 
         const session = await getSession();
         console.log(session);
-        const { currency, password } = Object.fromEntries(await request.formData()) as Record<string, string>
+        const { currency } = Object.fromEntries(await request.formData()) as Record<string, string>
         console.log(currency);
         if(session !== null){
             const { data, error } = await supabase
             .from('account')
-            .insert({ user_id: session.user.id, currency: currency })
-            console.log(data);
-            console.log(error);
-            const { data: data1, error: e } = await supabase
-            .from('account')
-            .select()
-            console.log(data1);
-            console.log(e);
+            .update({ currency: currency })
+            .eq("user_id", session.user.id)
+            
+            if(error) return fail(400, {message: "Unable to input currency, please try again", success: false})
+            else {
+                await supabase
+                .from('account')
+                .update({"first_time": false})
+                .eq("user_id", session.user.id)
+            }
+            throw redirect(307, '/')
+            
         }
   }
 }
