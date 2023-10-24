@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { fade, blur } from 'svelte/transition';
+    import { fade } from 'svelte/transition';
 
     let tabs = [
 		{ name: "Debit card", card_number: "**** **** **** 2345", balance: "18,986.00" },
@@ -8,7 +8,7 @@
     let selected = tabs[0].name;
     
 </script>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-7 ml-3 gap-x-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-7 ml-2 gap-x-6">
     <div class="col-span-1 flex flex-col">
         <h2 class="mt-6 text-2xl text-dark font-semibold">My account</h2>
         <div class="flex flex-row gap-5 mt-6">  
@@ -76,17 +76,38 @@
             {/each}
         </div>
     </div>
-    <div class="col-span-1 lg:col-span-3 flex flex-col mt-24 lg:ml-16">
+    <div class="col-span-1 lg:col-span-3 flex flex-col mt-24 ml-2 lg:ml-16">
         <div class="flex flex-row justify-between items-center">
             <div class="flex flex-col">
-                <h2 class="text-2xl text-dark font-semibold">Transaction history</h2>
-                <p class="text-lg text-light font-medium">You have 21 transactions this month</p>
+                <h2 class="text-xl md:text-2xl text-dark font-semibold">Transaction history</h2>
+                <p class="text-md md:text-lg text-light font-medium">You have 21 transactions this month</p>
             </div>
-            <a href="/transactions" class="bg-primary text-white px-6 py-2.5 rounded-md hover:bg-primary/95 transition ease-in-out duration-150">View all transactions</a>
+            <a href="/transactions" class="text-primary hover:text-primary/95 transition ease-in-out duration-150">View transactions</a>
         </div>
-        <div>
-            
-        
+        <div class="flex flex-col overflow-scroll md:overflow-hidden mt-5">
+            <div class="flex flex-row justify-between text-light font-semibold">
+                <span>Date</span>
+                <span>Name</span>
+                <span>Type</span> 
+                <span>Amount</span>
+            </div>
+            {#each {length: 3} as _, i}
+                <div class="flex flex-row justify-between mt-5">
+                    <div class="flex flex-col">
+                        <span class="font-semibold text-dark">Oct 18, 2023</span>
+                        <span class="text-light">8:45 am</span>
+                    </div>
+                    <div class="flex gap-x-3">
+                        <img class="w-11 h-11 rounded-full object-cover" src="https://images.pexels.com/photos/1381558/pexels-photo-1381558.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="avatar">
+                        <div class="flex flex-col">
+                            <span class="text-md font-bold text-dark">Hessel</span>
+                            <span class="text-sm text-light font-medium -mt-1">Linux VPS</span>
+                        </div>
+                    </div>
+                    <div class="font-semibold text-dark">Personal</div>
+                    <span class="text-red-600">- &euro;10,00</span>
+                </div>
+            {/each}
         </div>
     </div>
 
