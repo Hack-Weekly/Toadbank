@@ -9,6 +9,7 @@ declare global {
     encrypt(key: string, iv: string, data: string): string | null
     decrypt(key: string, iv: string, cipher: string): string | null
     deriveKey(key: string, iv: string, salt: string): string | null
+    hash(data: string): string | null
   }
 
   interface ISupabaseCryptoOpeartions {
