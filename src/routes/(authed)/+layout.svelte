@@ -4,9 +4,9 @@
     import { writable } from 'svelte/store';
     import type { LayoutServerData } from "../$types";
 
-    export let data: LayoutServerData
+    // export let data: LayoutServerData
 
-    console.log(data)
+    // console.log(data)
 
     async function logout () {
     const response = await fetch("/auth/logout", { method: "DELETE" })
