@@ -3,7 +3,7 @@ import { PRIVATE_KEY, PRIVATE_KEY_IV } from '$env/static/private';
 import { error, redirect } from '@sveltejs/kit';
 import type { LayoutServerLoad } from "./$types"
 
-export const load: LayoutServerLoad = async ({ locals: { supabase,  getSession } }) => {
+export const load: LayoutServerLoad = async ({ locals: { supabase, getSession } }) => {
     const session = await getSession()
     if (!session) throw redirect(307, '/auth/login')
     // we will load card data here since we know that the user is legit and his session is a valid one
@@ -31,6 +31,13 @@ export const load: LayoutServerLoad = async ({ locals: { supabase,  getSession }
       console.error(error)
       protectedCards.push(data![0])
     }
+  
+    const {data, error} = await supabase
+    .from("account")
+    .select("first_time")
+    .eq("user_id", session.user.id)
+    // checks boolean from table
+    if (data![0].first_time) throw redirect(307, '/set-currency');
 
     // pretty sure i use the same logic in another module, prob gonna make a small function block for this
     const crypt = new ServerCrypto()
