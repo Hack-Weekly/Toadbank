@@ -1,7 +1,13 @@
-<script>
+<script lang="ts">
     import "../../app.css";
     import { goto } from "$app/navigation";
     import { writable } from 'svelte/store';
+    import type { LayoutServerData } from "../$types";
+
+    export let data: LayoutServerData
+
+    console.log(data)
+
     async function logout () {
     const response = await fetch("/auth/logout", { method: "DELETE" })
         goto(response.url)
