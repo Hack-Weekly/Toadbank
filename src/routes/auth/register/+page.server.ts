@@ -32,7 +32,7 @@ export const actions: Actions = {
     
     // validation End
 
-    const { data, error } = await supabase.auth.signUp({
+    const { error, data } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -40,14 +40,13 @@ export const actions: Actions = {
       }
     })
     
-    if(data.user){
+    if (data.user){
       const user = data.user;
       const {data: response, error} = await supabase
       .from("account")
       .insert({user_id: user.id, balance:(Math.random() * (100000 - 1) + 1).toFixed(2)}) //DO NOT DARE TO CHANGE THIS, YOU WILL EITHER BE RICH OR POOR
-      if(error) return fail(400, {message: "failed, please try again", success: false})
+      if (error) return fail(400, {message: "failed, please try again", success: false})
     }
-    if (error) return fail(error.status as number, { message: error.message, success: false })
 
     return { message: "Successfuly signed up! Please verify your email and click on the magic link to confirm account creation", success: true } 
   }
