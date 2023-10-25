@@ -1,5 +1,10 @@
 <script lang="ts">
-  import { enhance } from "$app/forms";
+    import { enhance } from "$app/forms";
+    import type { ActionData } from "./$types";
+
+    export let form: ActionData
+
+    $: if (form) console.log(form)
 </script>
 
 <form class="bg-black p-3 z-10 absolute flex border-green-500" method="post" use:enhance>

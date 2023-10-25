@@ -1,5 +1,3 @@
-import { PRIVATE_KEY, PRIVATE_KEY_IV } from "$env/static/private"
-import bcrypt from "bcrypt"
 import { Buffer } from "node:buffer"
 import * as Crypto from "node:crypto"
 
@@ -18,8 +16,9 @@ class ServerCrypto implements IServerCrypto {
 
   hash (data: string): (string | null) {
     try {
-      const hash = bcrypt.hashSync(data, 12)
-      return hash
+      const hash = Crypto.createHash("sha256")
+      hash.update(data)
+      return hash.digest("hex")
     } catch (e) {
       console.error("There was an error creating the one way hash!", e)
       return null

@@ -16,6 +16,18 @@ declare global {
     supabase: SupabaseClient<Database>
   }
 
+  namespace Resources {
+    interface ICard {
+      id: string
+      cardholder: string
+      company: string
+      digits: string
+      last_digits: number
+      card_type: "debit" | "credit"
+      created_at: string
+    }
+  }
+
   namespace App {
     interface Locals {
       supabase: SupabaseClient<Database>

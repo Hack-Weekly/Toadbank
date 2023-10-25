@@ -32,15 +32,20 @@ export const actions: Actions = {
     
     // validation End
 
-    const { error } = await supabase.auth.signUp({
+    const { error, data: { session } } = await supabase.auth.signUp({
       email,
       password,
       options: {
         emailRedirectTo: `${url.origin}/auth/callback`,
       }
     })
-   
+
     if (error) return fail(error.status as number, { message: error.message, success: false })
+    // by default we set currency to dollars, since sheep asks the user after registration if he uses another currency
+    // we can just update the table and this row for x user.
+    const { error: err } = await supabase.from("account").insert({ user_id: session!.user.id, balance: 5000.00, currency: "$" })
+
+    if (err) return fail(500, { message: err.message, success: false })
 
     return { message: "Successfuly signed up! Please verify your email and click on the magic link to confirm account creation", success: true } 
   }
