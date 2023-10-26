@@ -14,18 +14,3 @@
     <input type="text" name="type" placeholder="card type"/>
     <button class="bg-green-500 p-3 text-white">Submit</button>
 </form>
-
-
-<!-- Tailwind wasnt applying styles, you can change this later -->
-<style>
-  input {
-      background-color: black;
-      border: 1px solid white;
-      color: white;
-  }
-
-  button {
-    background-color: green;
-    color: white;
-  }
-</style>

@@ -3,7 +3,7 @@ import type { Actions } from "@sveltejs/kit";
 
 export const actions: Actions = {
   default: async ({ url, request, locals: { supabase } }) => {
-   const { email, password, confirm_password } = Object.fromEntries(await request.formData()) as Record<string, string>
+   const { email, username, password, confirm_password } = Object.fromEntries(await request.formData()) as Record<string, string>
     // validation
     if (!email) return fail(400, { message: 'Email is required', error: 'email' });
     if (!password) return fail(400, { message: "Password is required", error: "password" })
@@ -39,7 +39,7 @@ export const actions: Actions = {
         emailRedirectTo: `${url.origin}/auth/callback`,
       }
     })
-    
+   
     if (data.user){
       const user = data.user;
       const {data: response, error} = await supabase

@@ -1,9 +1,5 @@
-import { redirect } from "@sveltejs/kit";
+import { json } from "@sveltejs/kit";
 import type { RequestHandler } from "@sveltejs/kit";
-
-// NOTE I HAVE NOT TESTED THIS YET BECAUSE I IMPLEMENTED IT BEFORE DECRYPTION AND LOADING OF CARDS
-// WILL AFTERWARDS
-
 
 export const DELETE: RequestHandler = async ({ url, locals: { supabase, getSession } }) => {
   try {
@@ -20,7 +16,7 @@ export const DELETE: RequestHandler = async ({ url, locals: { supabase, getSessi
       const session = await getSession()
       const userId = session!.user.id
       const { error } = await supabase.from("account").update(v).eq("user_id", userId)
-      throw error
+      if (error) throw error 
     }
 
 
@@ -33,8 +29,11 @@ export const DELETE: RequestHandler = async ({ url, locals: { supabase, getSessi
         break
     }
 
-    throw redirect(302, "/card/add-new")
+    console.log("redirecting")
+
+    return json({ status: 302, url: "/card/add-new" })
   } catch (e) {
+      console.log("error", e)
       return new Response(`${e}`)
   }
 }

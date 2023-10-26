@@ -1,5 +1,5 @@
-import { PRIVATE_KEY, PRIVATE_KEY_IV } from "$env/static/private";
-import ServerCrypto from "$lib/server/crypto";
+import { prepareDerived } from "$lib/server/util";
+import { PRIVATE_KEY_IV } from "$env/static/private";
 import { fail } from "@sveltejs/kit";
 import type { Actions } from "@sveltejs/kit";
 
@@ -7,22 +7,12 @@ export const actions: Actions = {
   default: async ({ request, locals: { getSession, supabase } }) => {
     const { cardholder, company, digits, type } = Object.fromEntries(await request.formData()) as Record<string, string> 
     // NOTE for card type, make sure a enum was created within the database to select strictly between credit or debit 
-    const crypto = new ServerCrypto()
-    const session = await getSession()
-    // session is supposed to be checked in the layout on load, and the session needs to have basic user data
-    // tied to it
-    const userId = session!.user.id
-    const hash = crypto.hash(userId)
-    // change the error message later if you need
-    if (!hash) return fail(500, { message: "Something went wrong when attempting to create a hash!", success: false })
-    const derived = crypto.deriveKey(PRIVATE_KEY, hash)
-    if (!derived) return fail(500, { message: "Internal server error, something went wrong when attempting to add card!", success: false }) 
-    
+    const { crypt, derived, userId } = await prepareDerived({ getSession, supabase }) 
     const lastDigits = digits.slice(digits.length - 4, digits.length)
     const encrypted = []
 
     for (const x of [cardholder, company, digits]) {
-      const cipher = crypto.encrypt(derived, PRIVATE_KEY_IV, x)
+      const cipher = crypt.encrypt(derived, PRIVATE_KEY_IV, x)
       if (cipher) encrypted.push(cipher)
     }
 
