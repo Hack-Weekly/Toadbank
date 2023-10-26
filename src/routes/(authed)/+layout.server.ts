@@ -3,7 +3,7 @@ import { PRIVATE_KEY_IV } from '$env/static/private';
 import { error, redirect } from '@sveltejs/kit';
 import type { LayoutServerLoad } from "./$types"
 
-export const load: LayoutServerLoad = async ({ locals: { supabase,  getSession } }) => {
+export const load: LayoutServerLoad = async ({ locals: { supabase, getSession } }) => {
     const session = await getSession()
     if (!session) throw redirect(307, '/auth/login')
     const { derived, crypt, userId } = await prepareDerived({ getSession, supabase })
@@ -13,6 +13,13 @@ export const load: LayoutServerLoad = async ({ locals: { supabase,  getSession }
     // these 2 conditionals need better handling in the sense that we should check wether a data obj is empty and what not
     // but im just trynna implement something basic for the time being.
     // NOTE that we could also reuse some logic here.
+
+    const { data , error } = await supabase
+     .from("account")
+     .select("first_time")
+     .eq("user_id", userId)
+     // checks boolean from table
+    if (data![0].first_time) throw redirect(307, '/set-currency');
     
     async function checkForCard (field: "credit_card_id" | "debit_card_id") {
       if (accountDetails.data && accountDetails.data[0] && accountDetails.data[0][field]) {
