@@ -3,7 +3,7 @@ import type { Actions } from "@sveltejs/kit";
 
 export const actions: Actions = {
   default: async ({ url, request, locals: { supabase } }) => {
-   const { email, password, confirm_password } = Object.fromEntries(await request.formData()) as Record<string, string>
+   const { email, username, password, confirm_password } = Object.fromEntries(await request.formData()) as Record<string, string>
     // validation
     if (!email) return fail(400, { message: 'Email is required', error: 'email' });
     if (!password) return fail(400, { message: "Password is required", error: "password" })
@@ -43,7 +43,7 @@ export const actions: Actions = {
     if (error) return fail(error.status as number, { message: error.message, success: false })
     // by default we set currency to dollars, since sheep asks the user after registration if he uses another currency
     // we can just update the table and this row for x user.
-    const { error: err } = await supabase.from("account").insert({ user_id: session!.user.id, balance: 5000.00, currency: "$" })
+    const { error: err } = await supabase.from("account").insert({ user_id: session!.user.id, balance: 5000.00, currency: "$", username })
 
     if (err) return fail(500, { message: err.message, success: false })
 

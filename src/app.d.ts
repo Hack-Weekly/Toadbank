@@ -33,12 +33,18 @@ declare global {
       supabase: SupabaseClient<Database>
       getSession(): Promise<Session | null>
     }
+
     interface PageData {
       session: Session | null
     }
+
+    interface PageServerData {
+      card: Resources.ICard | null
+      cards: Resources.ICard[] | null
+    }
+  }
     // interface Error {}
     // interface Platform {}
-  }
-}
+ }
 
 export {}

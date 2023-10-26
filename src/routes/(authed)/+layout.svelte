@@ -6,11 +6,10 @@
 
     export let data: LayoutServerData
 
-    console.log(data)
-
     async function logout () {
-    const response = await fetch("/auth/logout", { method: "DELETE" })
-        goto(response.url)
+      const response = await fetch("/auth/logout", { method: "DELETE" })
+      const data = await response.json()
+      goto(data.url)
     }
     // Create a writable store
     const isOpen = writable(false);
