@@ -4,9 +4,9 @@
     import { writable } from 'svelte/store';
     import type { LayoutServerData } from "../$types";
 
-    export let data: LayoutServerData
+    // export let data: LayoutServerData
 
-    console.log(data)
+    // console.log(data)
 
     async function logout () {
     const response = await fetch("/auth/logout", { method: "DELETE" })
@@ -112,7 +112,7 @@
 </aside>
 <div class="px-4 pt-2 sm:ml-64 mt-6">
     <div class="flex items-center justify-between">
-        <span class="ml-3 md:ml-0 text-lg sm:text-xl md:text-2xl font-medium">Welcome back <strong>Hessel!</strong></span>
+        <span class="ml-2 md:ml-0 text-lg sm:text-xl md:text-2xl font-medium">Welcome back <strong>Hessel!</strong></span>
         <div class="flex gap-3 mr-14">
             <img class="w-11 h-11 rounded-full object-cover" src="https://images.pexels.com/photos/1381558/pexels-photo-1381558.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="avatar">
             <div class="flex flex-col">
