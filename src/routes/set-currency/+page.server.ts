@@ -1,13 +1,16 @@
-import { fail, redirect } from "@sveltejs/kit";
+import { fail, redirect, error } from '@sveltejs/kit';
 import type { Actions } from "./$types";
+import currency_list from "$lib/currency_list.json";
+
 
 export const actions: Actions = {
     default: async ({ request, locals: { supabase, getSession } }) => {
 
         const session = await getSession();
-        console.log(session);
+        
         const { currency } = Object.fromEntries(await request.formData()) as Record<string, string>
-        console.log(currency);
+        if (!currency_list.some(c => c.code === currency)) return fail(400, {message: "Invalid currency", success: false, error: "currency"})
+        
         if(session !== null){
             const { data, error } = await supabase
             .from('account')
