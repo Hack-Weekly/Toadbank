@@ -1,13 +1,24 @@
 <script lang="ts">
+  import { fade } from 'svelte/transition';
+  import { page } from "$app/stores";
+  import { goto } from "$app/navigation";
 
-    import { fade } from 'svelte/transition';
-
-    let tabs = [
+  console.log($page.data)
+      let tabs = [
 		{ name: "Debit card", card_number: "**** **** **** 2345", balance: "18,986.00" },
 		{ name: "Credit card", card_number: "**** **** **** 1234", balance: "1,768.00" },
 	]
     let selected = tabs[0].name;
-    
+
+  const cards = $page.data.cards || null
+
+  async function removeCard (cid: string) {
+    const response = await fetch(`/card/delete?cid=${cid}`, { method: "DELETE" })
+    const data = await response.json()
+    if (data.url) {
+      window.location = data.url
+    }
+  }
 </script>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-7 ml-2 gap-x-6">
     <div class="col-span-1 flex flex-col">
@@ -114,4 +125,18 @@
         </div>
     </div>
 
+
 </div>
+
+<!--{#each cards as { card_type, created_at, cardholder, last_digits, id, company }}
+  <div>
+      <h2>{card_type}</h2>
+      <h2>{created_at}</h2>
+      <h2>{last_digits}</h2>
+      <h2>{id}</h2>
+      <h2>{cardholder}</h2>
+      <h2>{company}</h2>
+      <button on:click={() => removeCard(id)} class="bg-red-500 text-white p-3">Remove Card</button>
+      <a href={`/card/update?cid=${id}`} class="bg-blue-500 text-white p-3">Update Card</a>
+  </div>
+{/each}-->

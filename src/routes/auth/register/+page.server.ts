@@ -46,7 +46,7 @@ export const actions: Actions = {
         emailRedirectTo: `${url.origin}/auth/callback`,
       }
     })
-    
+   
     if (data.user){
       const user = data.user;
       const {data: response, error} = await supabase
