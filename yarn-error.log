@@ -1,29 +1,29 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add dinero.js/currencies@alpha
+  /usr/bin/node-18 /usr/local/bin/yarn add @types/fast-iban
 
 PATH: 
-  C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft\jdk-11.0.16.101-hotspot\bin;C:\Users\Admin\AppData\Local\Programs\Python\Python310\Scripts;C:\Program Files\Oculus\Support\oculus-runtime;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Program Files\php-8.0.11;C:\Program Files\dotnet\;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;C:\Users\Admin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Admin\AppData\Roaming\npm;C:\Users\Admin\AppData\Local\GitHubDesktop\bin;C:\Users\Admin\.dotnet\tools;C:\Users\Admin\;C:\ProgramData\ComposerSetup\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Docker\Docker\resources\bin;C:\Users\Admin\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\Admin\AppData\Local\Programs\Python\Python310;C:\Program Files\Go\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;D:\development\flutter\flutter_windows_3.13.3-stable\flutter\bin;C:\Program Files\Java\jdk-20\bin;D:\development\flutter\commandlinetools-win-10406996_latest\cmdline-tools\platform-tools;D:\development\flutter\commandlinetools-win-10406996_latest\cmdline-tools\platforms;C:\Users\Admin\AppData\Local\pnpm;C:\Users\Admin\AppData\Local\Programs\Python\Python310\Scripts\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;C:\Users\Admin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Admin\AppData\Local\GitHubDesktop\bin;C:\Users\Admin\.dotnet\tools;C:\Users\Admin\AppData\Local\ComposerSetup\bin;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\Users\Admin\AppData\Roaming\npm;C:\Users\Admin\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\Admin\go\bin;C:\Users\Admin\.dotnet\tools
+  /home/nathan/.cargo/bin:/home/nathan/.local/bin:/home/nathan/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/nathan/.dotnet/tools:/var/lib/snapd/snap/bin:/home/nathan/.local/share/JetBrains/Toolbox/scripts:/home/nathan/.local/share/JetBrains/Toolbox/scripts
 
 Yarn version: 
   1.22.19
 
 Node version: 
-  20.3.1
+  18.18.2
 
 Platform: 
-  win32 x64
+  linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/dinero.js%2fcurrencies: Request "https://registry.yarnpkg.com/dinero.js%2fcurrencies" returned a 405
-      at params.callback [as _callback] (C:\Users\Admin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66154:18)
-      at self.callback (C:\Users\Admin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140890:22)
-      at Request.emit (node:events:511:28)
-      at Request.<anonymous> (C:\Users\Admin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141862:10)
-      at Request.emit (node:events:511:28)
-      at IncomingMessage.<anonymous> (C:\Users\Admin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141784:12)
-      at Object.onceWrapper (node:events:625:28)
-      at IncomingMessage.emit (node:events:523:35)
-      at endReadableNT (node:internal/streams/readable:1367:12)
+  Error: https://registry.yarnpkg.com/@types%2ffast-iban: Not found
+      at params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66145:18)
+      at self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:517:28)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:517:28)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:631:28)
+      at IncomingMessage.emit (node:events:529:35)
+      at endReadableNT (node:internal/streams/readable:1368:12)
       at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
 
 npm manifest: 
@@ -54,7 +54,8 @@ npm manifest:
   	"dependencies": {
   		"@supabase/auth-helpers-sveltekit": "^0.10.3",
   		"@supabase/supabase-js": "^2.38.2",
-  		"dinero.js": "^2.0.0-alpha.14"
+  		"dinero.js": "^2.0.0-alpha.14",
+  		"fast-iban": "^1.2.0"
   	}
   }
 
@@ -205,7 +206,7 @@ Lockfile:
   
   "@esbuild/win32-x64@0.18.20":
     version "0.18.20"
-    resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.18.20.tgz"
+    resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.18.20.tgz#786c5f41f043b07afb1af37683d7c33668858f6d"
     integrity sha512-kTdfRcSiDfQca/y9QIkng02avJ+NCaQvrMejlsB3RRv5sE9rRoeBPISaZpKxHELzRxZyLvNts1P27W3wV+8geQ==
   
   "@fastify/busboy@^2.0.0":
@@ -271,19 +272,19 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.23.tgz#498e41218ab3b6a1419c735e5c6ae2c5ed609b6c"
     integrity sha512-C16M+IYz0rgRhWZdCmK+h58JMv8vijAA61gmz2rspCSwKwzBebpdcsiUmwrtJRdphuY30i6BSLEOP8ppbNLyLg==
   
-  "@supabase/auth-helpers-shared@0.5.0":
-    version "0.5.0"
-    resolved "https://registry.yarnpkg.com/@supabase/auth-helpers-shared/-/auth-helpers-shared-0.5.0.tgz#e1fbe0732d9f171ab21135416ccf719aa596999f"
-    integrity sha512-kioUeYDBZ89cfqOTZFOLEFIO7kGczL0XJYZdVv/bKt5efXqhiY14NbzgGWiMvvD9o9Iluo0+YEV2tG3ZZ5W06A==
+  "@supabase/auth-helpers-shared@0.6.0":
+    version "0.6.0"
+    resolved "https://registry.yarnpkg.com/@supabase/auth-helpers-shared/-/auth-helpers-shared-0.6.0.tgz#86fc55279058e33ad2b31e59ed176fb49c1cb8fc"
+    integrity sha512-rBj8KNnzBpj2G3icClcTGE6Mrldo1zVQot5PCr8wbEMDa6/a/RIScOSwMIc9dq+eq6XwF8BVczUBwaN+RPBiTA==
     dependencies:
       jose "^4.14.4"
   
   "@supabase/auth-helpers-sveltekit@^0.10.3":
-    version "0.10.3"
-    resolved "https://registry.yarnpkg.com/@supabase/auth-helpers-sveltekit/-/auth-helpers-sveltekit-0.10.3.tgz#153de8d1fe51c679b6124fde270de9980d581a7e"
-    integrity sha512-vU39ecz1xXpBZMaSCZi7Rh+NLIS0W67hbrdWt2UdSWOVi/XT6z01DoO97/G4n5p/e9fyCR/j9xHGCoeFO++1lA==
+    version "0.10.4"
+    resolved "https://registry.yarnpkg.com/@supabase/auth-helpers-sveltekit/-/auth-helpers-sveltekit-0.10.4.tgz#8df1d4e23949e773df18444794b8fa861b14d51b"
+    integrity sha512-EsuOp3lBuQHsntVGvV1VQdSqB1DkqpKWkNj7ayFcWHrHHLUiD8XpXJ5e/hluIYziJRp+/3vga2Rwhw2CFyDuqw==
     dependencies:
-      "@supabase/auth-helpers-shared" "0.5.0"
+      "@supabase/auth-helpers-shared" "0.6.0"
   
   "@supabase/functions-js@^2.1.5":
     version "2.1.5"
@@ -313,10 +314,10 @@ Lockfile:
     dependencies:
       "@supabase/node-fetch" "^2.6.14"
   
-  "@supabase/realtime-js@^2.8.1":
-    version "2.8.1"
-    resolved "https://registry.yarnpkg.com/@supabase/realtime-js/-/realtime-js-2.8.1.tgz#d93864b399e53f8618fea164956b1f43a77e75d9"
-    integrity sha512-bka5U4OeoKMdorGMPjdF30cl8n8nbhn+I9H4iySKzbN45W6AGxi7xoODnxdq/QwaDGtVyTMVbU+GVWre0QCdtw==
+  "@supabase/realtime-js@^2.8.4":
+    version "2.8.4"
+    resolved "https://registry.yarnpkg.com/@supabase/realtime-js/-/realtime-js-2.8.4.tgz#71de0874f38295ad1e780e0e6f3fbc6ae343e862"
+    integrity sha512-5C9slLTGikHnYmAnIBOaPogAgbcNY68vnIyE6GpqIKjHElVb6LIi4clwNcjHSj4z6szuvvzj8T/+ePEgGEGekw==
     dependencies:
       "@supabase/node-fetch" "^2.6.14"
       "@types/phoenix" "^1.5.4"
@@ -331,15 +332,15 @@ Lockfile:
       "@supabase/node-fetch" "^2.6.14"
   
   "@supabase/supabase-js@^2.38.2":
-    version "2.38.2"
-    resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-2.38.2.tgz#566038ad4bbbb940c4f6749dc8d6992319a12b7e"
-    integrity sha512-yOCi94oO5WVUBhQ890BvtT7J3p8spP47PMhn22YldIcDLEQWE6N6X2JzfWCLHktXw+oCYUJfQBuqYhyLHAKb0w==
+    version "2.38.4"
+    resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-2.38.4.tgz#ca075f7aa5ad0e33cb39b0254053087c56323e4f"
+    integrity sha512-bYwxm/GosvRqOMIv6YP7qUTZWi/trgHtDWUEZDEmyRHW24d0JYIb1GOt6RaO2hsWlecn88DAJIpjoNbprocgRA==
     dependencies:
       "@supabase/functions-js" "^2.1.5"
       "@supabase/gotrue-js" "^2.56.0"
       "@supabase/node-fetch" "^2.6.14"
       "@supabase/postgrest-js" "^1.8.5"
-      "@supabase/realtime-js" "^2.8.1"
+      "@supabase/realtime-js" "^2.8.4"
       "@supabase/storage-js" "^2.5.4"
   
   "@sveltejs/adapter-auto@^2.0.0":
@@ -350,9 +351,9 @@ Lockfile:
       import-meta-resolve "^3.0.0"
   
   "@sveltejs/kit@^1.20.4":
-    version "1.27.0"
-    resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.27.0.tgz#aec182a10e61e079a322ad26d9b5bd610919a7a9"
-    integrity sha512-a1wPIq2uO3RsTmV+KbA4venOgCJDbfHTXFe+g7eJR3N8l46DSuulUONJ1qnk2EnZWYC1Uj3Wbp3US0WFocIzXg==
+    version "1.27.1"
+    resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.27.1.tgz#dd691b108e974a2a155ad4a5956848a2332941a4"
+    integrity sha512-nYkOUJKbeI8fcwvt/cyhTdz6VG4kT6XVprNnzfIwif+IZ8RvxvJuPhPhYjz14ASIcMLpq8xC6D3X4xH3bvWi+Q==
     dependencies:
       "@sveltejs/vite-plugin-svelte" "^2.4.1"
       "@types/cookie" "^0.5.1"
@@ -399,11 +400,11 @@ Lockfile:
     integrity sha512-CS2rOaoQ/eAgAfcTfq6amKG7bsN+EMcgGY4FAFQdvSj2y1ixvOZTUA9mOtCai7E1SYu283XNw7urKK30nP3wkQ==
   
   "@types/node@*":
-    version "20.8.8"
-    resolved "https://registry.yarnpkg.com/@types/node/-/node-20.8.8.tgz#adee050b422061ad5255fc38ff71b2bb96ea2a0e"
-    integrity sha512-YRsdVxq6OaLfmR9Hy816IMp33xOBjfyOgUd77ehqg96CFywxAPbDbXvAsuN2KVg2HOT8Eh6uAfU+l4WffwPVrQ==
+    version "20.8.9"
+    resolved "https://registry.yarnpkg.com/@types/node/-/node-20.8.9.tgz#646390b4fab269abce59c308fc286dcd818a2b08"
+    integrity sha512-UzykFsT3FhHb1h7yD4CA4YhBHq545JC0YnEz41xkipN88eKQtL6rSgocL5tbAP6Ola9Izm/Aw4Ora8He4x0BHg==
     dependencies:
-      undici-types "~5.25.1"
+      undici-types "~5.26.4"
   
   "@types/phoenix@^1.5.4":
     version "1.6.3"
@@ -423,9 +424,9 @@ Lockfile:
       "@types/node" "*"
   
   acorn@^8.10.0, acorn@^8.9.0:
-    version "8.10.0"
-    resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.10.0.tgz#8be5b3907a67221a81ab23c7889c4c5526b62ec5"
-    integrity sha512-F0SAmZ8iUtS//m8DmCTA0jlh6TDKkHQyK6xc6V4KDTyZKA9dnvX9/3sRTVQrWm79glUAZbnmmNcdYwUIHWVybw==
+    version "8.11.2"
+    resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.11.2.tgz#ca0d78b51895be5390a5903c5b3bdcdaf78ae40b"
+    integrity sha512-nc0Axzp/0FILLEVsm4fNwLCwMttvhEI263QtVPQcbpfZZ3ts0hLsZGOpE6czNlid7CJ9MlyH8reXkpsf3YUY4w==
   
   any-promise@^1.0.0:
     version "1.3.0"
@@ -529,9 +530,9 @@ Lockfile:
     integrity sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==
   
   caniuse-lite@^1.0.30001538, caniuse-lite@^1.0.30001541:
-    version "1.0.30001553"
-    resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001553.tgz#e64e7dc8fd4885cd246bb476471420beb5e474b5"
-    integrity sha512-N0ttd6TrFfuqKNi+pMgWJTb9qrdJu4JSpgPFLe/lrD19ugC6fZgF0pUewRowDwzdDnb9V41mFcdlYgl/PyKf4A==
+    version "1.0.30001558"
+    resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001558.tgz#d2c6e21fdbfe83817f70feab902421a19b7983ee"
+    integrity sha512-/Et7DwLqpjS47JPEcz6VnxU9PwcIdVi0ciLXRWBQdj1XFye68pSQYpV0QtPTfUKWuOaEig+/Vez2l74eDc1tPQ==
   
   chokidar@^3.4.1, chokidar@^3.5.3:
     version "3.5.3"
@@ -649,9 +650,9 @@ Lockfile:
     integrity sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==
   
   electron-to-chromium@^1.4.535:
-    version "1.4.566"
-    resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.566.tgz#5c5ba1d2dc895f4887043f0cc7e61798c7e5919a"
-    integrity sha512-mv+fAy27uOmTVlUULy15U3DVJ+jg+8iyKH1bpwboCRhtDC69GKf1PPTZvEIhCyDr81RFqfxZJYrbgp933a1vtg==
+    version "1.4.569"
+    resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.569.tgz#1298b67727187ffbaac005a7425490d157f3ad03"
+    integrity sha512-LsrJjZ0IbVy12ApW3gpYpcmHS3iRxH4bkKOW98y1/D+3cvDUWGcbzbsFinfUS8knpcZk/PG/2p/RnkMCYN7PVg==
   
   es5-ext@^0.10.35, es5-ext@^0.10.50:
     version "0.10.62"
@@ -746,6 +747,13 @@ Lockfile:
       glob-parent "^5.1.2"
       merge2 "^1.3.0"
       micromatch "^4.0.4"
+  
+  fast-iban@^1.2.0:
+    version "1.2.0"
+    resolved "https://registry.yarnpkg.com/fast-iban/-/fast-iban-1.2.0.tgz#6e68fcf47b0b0fea7f195b7024459bec60500212"
+    integrity sha512-b8Ul29Ff308m0OYYm2dKERgmY/Prvww+3uSDL+VZJBPVH7GhfKrQ2apbShQrCJwQjOnpe+d1b72A//u2/Hr9xw==
+    dependencies:
+      iso-7064 "1.1.0"
   
   fastq@^1.6.0:
     version "1.15.0"
@@ -909,6 +917,11 @@ Lockfile:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/is-typedarray/-/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
     integrity sha512-cyA56iCMHAh5CdzjJIa4aohJyeO1YbwLi3Jc35MmRU6poroFjIGZzUzupGiRPOjgHg9TLu43xbpwXk523fMxKA==
+  
+  iso-7064@1.1.0:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/iso-7064/-/iso-7064-1.1.0.tgz#c498863841f105c4e2f46fd57a15881005426952"
+    integrity sha512-GO1bR+qa1AtWIBUoE59suIc6y4yn/1Ho8PEMmhHg0TXpEPzwxm0Z4/+Ps6JfrbYjSDu7yzIoIlQJJh3EHCpvoQ==
   
   jiti@^1.19.1:
     version "1.20.0"
@@ -1333,7 +1346,7 @@ Lockfile:
   
   svelte@^4.2.2:
     version "4.2.2"
-    resolved "https://registry.npmjs.org/svelte/-/svelte-4.2.2.tgz"
+    resolved "https://registry.yarnpkg.com/svelte/-/svelte-4.2.2.tgz#07d42eefc1bce46e48d2056c5f11dc4cc1e06555"
     integrity sha512-My2tytF2e2NnHSpn2M7/3VdXT4JdTglYVUuSuK/mXL2XtulPYbeBfl8Dm1QiaKRn0zoULRnL+EtfZHHP0k4H3A==
     dependencies:
       "@ampproject/remapping" "^2.2.1"
@@ -1351,9 +1364,9 @@ Lockfile:
       periscopic "^3.1.0"
   
   tailwindcss@^3.3.3:
-    version "3.3.4"
-    resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.3.4.tgz#f08c493ff3ddf03081c40e780e98f129e1c8214d"
-    integrity sha512-JXZNOkggUAc9T5E7nCrimoXHcSf9h3NWFe5sh36CGD/3M5TRLuQeFnQoDsit2uVTqgoOZHLx5rTykLUu16vsMQ==
+    version "3.3.5"
+    resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.3.5.tgz#22a59e2fbe0ecb6660809d9cc5f3976b077be3b8"
+    integrity sha512-5SEZU4J7pxZgSkv7FP1zY8i2TIAOooNZ1e/OGtxIEv6GltpoiXUqWvLy89+a10qYTB1N5Ifkuw9lqQkN9sscvA==
     dependencies:
       "@alloc/quick-lru" "^5.2.0"
       arg "^5.0.2"
@@ -1449,10 +1462,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.2.tgz#5ebb5e5a5b75f085f22bc3f8460fba308310fa78"
     integrity sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==
   
-  undici-types@~5.25.1:
-    version "5.25.3"
-    resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-5.25.3.tgz#e044115914c85f0bcbb229f346ab739f064998c3"
-    integrity sha512-Ga1jfYwRn7+cP9v8auvEXN1rX3sWqlayd4HP7OKk4mZWylEmu3KzXDUGrQUN6Ol7qo1gPvB2e5gX6udnyEPgdA==
+  undici-types@~5.26.4:
+    version "5.26.5"
+    resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
+    integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
   
   undici@~5.26.2:
     version "5.26.5"
