@@ -52,4 +52,4 @@ class ServerCrypto implements IServerCrypto {
   }
 }
 
-export default ServerCrypto
+export default new ServerCrypto()

@@ -51,7 +51,11 @@ export const actions: Actions = {
       const user = data.user;
       const {data: response, error} = await supabase
       .from("account")
-      .insert({user_id: user.id, username: username, balance:(Math.random() * (100000 - 1) + 1).toFixed(2)}) //DO NOT DARE TO CHANGE THIS, YOU WILL EITHER BE RICH OR POOR
+      // ill set a default currency, so that i can do the conversion from for example USD to some other amount
+      // for now lets say every user starts USD, also ill set an initial balance for every user.
+      // DineroJS seems to take a massive shit when dealing with floats + I feel like users should have an equal amount when starting
+      // you can change it back later if you want sheep. Im just trynna get this to run.
+      .insert({user_id: user.id, username: username, balance: 5000, currency: "USD"})
       if (error) return fail(400, {message: "failed, please try again", success: false})
     }
 

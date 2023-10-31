@@ -1,5 +1,9 @@
+<script lang="ts">
+  import { enhance } from "$app/forms";
+</script>
+
 <section class="mt-12">
-    <form>
+    <form method="POST" use:enhance>
         <div class="flex flex-row gap-3 justify-between">
             <div class="flex flex-col">
                 <h2 class="text-xl md:text-2xl text-dark font-semibold">Make a transaction</h2>
@@ -31,7 +35,7 @@
                             <p class="text-sm text-dark font-semibold">Receiver</p>
                         </div>
                         <div class="relative w-full md:flex-1 p-3">
-                            <input type="text" id="default-search" class="w-full py-2.5 px-3 rounded-md border border-lighter-200 shadow-input placeholder-lighter-200 focus:ring-0 outline-none" placeholder="Search Mockups, Logos...">
+                            <input name="receiver" type="text" id="default-search" class="w-full py-2.5 px-3 rounded-md border border-lighter-200 shadow-input placeholder-lighter-200 focus:ring-0 outline-none" placeholder="Search Mockups, Logos...">
                             <button class="z-20 text-dark absolute right-2.5 bottom-2.5 focus:ring-0 focus:outline-none mb-2 mr-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" class=" h-8 w-8 " viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -50,7 +54,7 @@
                             <p class="text-sm text-dark font-semibold">Amount</p>
                         </div>
                         <div class="w-full md:flex-1 p-3">
-                            <input min="1" class="w-full px-3 py-2.5 rounded-md border border-lighter-200 shadow-input placeholder-lighter-200 focus:ring-0 outline-none" type="number" placeholder="Enter amount">
+                            <input name="amount" min="1" class="w-full px-3 py-2.5 rounded-md border border-lighter-200 shadow-input placeholder-lighter-200 focus:ring-0 outline-none" type="number" placeholder="Enter amount">
                         </div>
                     </div>
                     <div class="flex flex-wrap -m-3">
@@ -58,7 +62,7 @@
                             <p class="text-sm text-dark font-semibold">Comment</p>
                         </div>
                         <div class="w-full md:flex-1 p-3">
-                            <input class="w-full px-3 py-2.5 rounded-md border border-lighter-200 shadow-input placeholder-lighter-200 focus:ring-0 outline-none" type="text" placeholder="e.g. for dads birthday gift">
+                            <input name="comment" class="w-full px-3 py-2.5 rounded-md border border-lighter-200 shadow-input placeholder-lighter-200 focus:ring-0 outline-none" type="text" placeholder="e.g. for dads birthday gift">
                         </div>
                     </div>
                     <button type="submit" class="px-3 py-2 flex ml-auto bg-primary hover:bg-primary/95 text-white font-medium text-medium md:text-lg rounded-lg transition duration-200 mt-6">

@@ -23,8 +23,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@dinero.js/currencies": "^2.0.0-alpha.14",
 		"@supabase/auth-helpers-sveltekit": "^0.10.3",
 		"@supabase/supabase-js": "^2.38.2",
-		"dinero.js": "^2.0.0-alpha.14"
+		"dinero.js": "^2.0.0-alpha.14",
+		"fast-iban": "^1.2.0"
 	}
 }
