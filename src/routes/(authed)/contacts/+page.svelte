@@ -1,10 +1,17 @@
 <script lang="ts">
     import { enhance } from "$app/forms";
-    import type { ActionData } from "./$types";
+    import type { PageServerData } from "./$types";
 
-    export let form: ActionData
+    export let data: PageServerData
 
-    $: if (form) console.log(form)
+    // $: if (form) console.log(form)
+    let contacts: Array<null>;
+    if(data.contacts) {
+
+        contacts = data.contacts;
+
+    }
+    
 </script>
 <section class="mt-12">
     <div class="flex flex-row items-center justify-between">
@@ -35,7 +42,7 @@
                 <span class="text-dark font-semibold">Oct 18, 2023</span>
                 <span class="text-light">8:45 am</span>
             </div>
-            <a href="" class="text-primary w-full">Edit</a>
+            <a href="/contacts/edit/{contacts.slug}" class="text-primary w-full">Edit</a>
         </div>
         {/each}
     </div>
