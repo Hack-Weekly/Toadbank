@@ -16,8 +16,6 @@ const currencyConversionMap: { [currency in AvailableCurrencies]: { [currency in
   "AUD": { "USD": 0.60, "CAD": 0.34, "MXN": 1.19, "EUR": 4.76, "AUD": 1, "SEK": 4.76, "DKK": 4.76, "JPY": 52.86, "GBP": 0.54, "IDR": 8095.24, "NOK": 4.76 }
 }
 
-
-
 class Currencies {
   private currencies: Currency<number>[]
   constructor () {
@@ -41,6 +39,8 @@ class Currencies {
     let convertedAmount: any
     const currentCurrency = from.toJSON().currency.code
     const converted = currencyConversionMap[currentCurrency as AvailableCurrencies]
+
+    console.log(converted)
     // O(n^2) solution you guys can improve it if you want
     
     for (const x in converted) {
@@ -60,9 +60,10 @@ class Currencies {
     //   scale: 4
     // } 
     // it seems like it adds an extra 0 which is supposed to be a decimal for whatever reason but, other than that it is accurate.
-    // 9k mexican pesos / 500 dollars = 18
+    // 9k mexican pesos / 500 dollars = 18 pesos and 18 * 500 = 9k
+    if (!convertedAmount) throw new Error("Could not convert!")
     return convertedAmount.toJSON().amount as number
   }
 }
 
-export default Currencies
+export default new Currencies()
