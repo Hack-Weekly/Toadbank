@@ -1,11 +1,19 @@
 <script lang="ts">
     import "../../app.css";
     import { goto } from "$app/navigation";
+    import { page } from '$app/stores';
     import { writable } from 'svelte/store';
     import type { LayoutServerData } from "../$types";
 
-    // export let data: LayoutServerData
+    export let data: LayoutServerData
+    const routes = ["transactions", "savings", "contacts", "settings"]
 
+    let account: Object; 
+    // @ts-ignore
+    if (data.account) {
+        // @ts-ignore
+        account = data.account;
+    }
     async function logout () {
       const response = await fetch("/auth/logout", { method: "DELETE" })
       const data = await response.json()
@@ -33,7 +41,7 @@
             </button>
             <h1 class="flex justify-start mt-6 text-3xl text-dark font-bold ml-14 ">ToadBank.</h1>
             <ul class="flex flex-col items-start ml-14 mt-12 space-y-4">
-                <li class="rounded-lg text-white bg-primary py-2 px-3 w-4/5">
+                <li class:active={!routes.some(route => $page.url.pathname.includes(route))} class="rounded-lg py-2 px-3 w-4/5">
                     <a href="/" class="flex gap-3">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -45,7 +53,7 @@
                         <span class="mt-0.5 pr-1">Overview</span> 
                     </a>    
                 </li>
-                <li class="rounded-lg text-dark hover:text-primary transition ease-in-out duration-150 bg-white py-2 px-3 w-4/5">
+                <li class:active={$page.url.pathname.startsWith("/transactions")} class="rounded-lg text-dark hover:text-primary transition ease-in-out duration-150 bg-white py-2 px-3 w-4/5">
                     <a href="/transactions" class="flex gap-3">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -57,7 +65,7 @@
                         <span class="mt-0.5 pr-1">Transactions</span> 
                     </a>    
                 </li>
-                <li class="rounded-lg text-dark hover:text-primary transition ease-in-out duration-150 bg-white py-2 px-3 w-4/5">
+                <li class:active={$page.url.pathname.startsWith("/savings")} class="rounded-lg text-dark hover:text-primary transition ease-in-out duration-150 bg-white py-2 px-3 w-4/5">
                     <a href="/savings" class="flex gap-3">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -70,7 +78,7 @@
                         <span class="mt-0.5 pr-1">Savings</span>
                     </a>
                 </li>
-                <li class="rounded-lg text-dark hover:text-primary transition ease-in-out duration-150 bg-white py-2 px-3 w-4/5">
+                <li class:active={$page.url.pathname.startsWith("/contacts")} class="rounded-lg text-dark hover:text-primary transition ease-in-out duration-150 bg-white py-2 px-3 w-4/5">
                     <a href="/contacts" class="flex gap-3">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -85,7 +93,7 @@
             </ul>
         </div>
         <ul class="flex flex-col items-start ml-14 mb-12 space-y-4">
-            <li class="rounded-lg text-dark hover:text-primary transition ease-in-out duration-150 bg-white py-2 px-3 w-4/5">
+            <li class:active={$page.url.pathname.startsWith("/settings")} class="rounded-lg text-dark hover:text-primary transition ease-in-out duration-150 bg-white py-2 px-3 w-4/5">
                 <a href="/settings" class="flex gap-3">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-dark" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -111,12 +119,12 @@
 </aside>
 <div class="px-4 pt-2 sm:ml-64 mt-6">
     <div class="flex items-center justify-between">
-        <span class="ml-2 md:ml-0 text-lg sm:text-xl md:text-2xl font-medium">Welcome back <strong>Hessel!</strong></span>
+        <span class="ml-2 md:ml-0 text-lg sm:text-xl md:text-2xl font-medium">Welcome back <strong>{account.username}!</strong></span>
         <div class="flex gap-3 mr-14">
             <img class="w-11 h-11 rounded-full object-cover" src="https://images.pexels.com/photos/1381558/pexels-photo-1381558.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="avatar">
             <div class="flex flex-col">
-                <span class="text-md font-bold text-dark">Hessel</span>
-                <span class="text-sm text-light font-medium -mt-1">hesselpa@live.nl</span>
+                <span class="text-md font-bold text-dark">{account.username}</span>
+                <span class="text-sm text-light font-medium -mt-1">{data.session.user.email}</span>
             </div>
         </div>
     </div>

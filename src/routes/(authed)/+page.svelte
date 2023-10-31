@@ -1,24 +1,26 @@
 <script lang="ts">
-  import { fade } from 'svelte/transition';
-  import { page } from "$app/stores";
-  import { goto } from "$app/navigation";
+    import { fade } from 'svelte/transition';
+    import { page } from "$app/stores";
+    import { goto } from "$app/navigation";
 
-  console.log($page.data)
-      let tabs = [
+    console.log($page.data)
+    let contacts: Array<Null>
+    if ($page.data.contacts) contacts = $page.data.contacts
+    let tabs = [
 		{ name: "Debit card", card_number: "**** **** **** 2345", balance: "18,986.00" },
 		{ name: "Credit card", card_number: "**** **** **** 1234", balance: "1,768.00" },
 	]
     let selected = tabs[0].name;
 
-  const cards = $page.data.cards || null
+    const cards = $page.data.cards || null
 
-  async function removeCard (cid: string) {
-    const response = await fetch(`/card/delete?cid=${cid}`, { method: "DELETE" })
-    const data = await response.json()
-    if (data.url) {
-      window.location = data.url
+    async function removeCard (cid: string) {
+        const response = await fetch(`/card/delete?cid=${cid}`, { method: "DELETE" })
+        const data = await response.json()
+        if (data.url) {
+            window.location = data.url
+        }
     }
-  }
 </script>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-7 ml-2 gap-x-6">
     <div class="col-span-1 flex flex-col">
@@ -69,23 +71,27 @@
             </svg>
         </div>
         <div class="flex flex-col">
-            {#each {length: 4} as _, i}
-            <div class="flex justify-between mt-6">
-                <div class="flex gap-3">
-                    <img class="w-11 h-11 rounded-full object-cover" src="https://images.pexels.com/photos/1381558/pexels-photo-1381558.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="avatar">
-                    <div class="flex flex-col">
-                        <span class="text-md font-bold text-dark">Hessel</span>
-                        <span class="text-sm text-light font-medium -mt-1">NL 5778 6432 8907 5512</span>
+            {#if contacts}
+                {#each contacts as contact}
+                    <div class="flex justify-between mt-6">
+                        <div class="flex gap-3">
+                            <img class="w-11 h-11 rounded-full object-cover" src="https://images.pexels.com/photos/1381558/pexels-photo-1381558.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="avatar">
+                            <div class="flex flex-col">
+                                <span class="text-md font-bold text-dark">{contact.name}</span>
+                                <span class="text-sm text-light font-medium -mt-1">NL 5778 6432 8907 5512</span>
+                            </div>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                            <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                            <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                        </svg>
                     </div>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                    <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                    <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                </svg>
-            </div>
-            {/each}
+                {/each}
+            {:else}
+                <span class="text-light font-medium mt-12 flex justify-center items-center">No contacts found</span>
+            {/if}
         </div>
     </div>
     <div class="col-span-1 lg:col-span-3 flex flex-col mt-24 ml-2 lg:ml-16">
