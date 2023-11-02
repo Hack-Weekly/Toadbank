@@ -37,12 +37,14 @@ export const load: LayoutServerLoad = async ({ locals: { supabase, getSession } 
    const cards: Resources.ICard[] = [] 
 
    for (const { id, card_type, digits, last_digits, cardholder, company, created_at } of protectedCards) {
-     const decryptedCardholder = crypt.decrypt(derived, PRIVATE_KEY_IV, cardholder) as string
-     const decryptedCompany = crypt.decrypt(derived, PRIVATE_KEY_IV, company) as string
-     // note that the card digits should only be retrieved when we actively need them, for example when we need to verify
-     // wether a card is legit or not or something like that.
-     cards.push({ id, cardholder: decryptedCardholder, company: decryptedCompany, digits, last_digits, card_type, created_at })
-   }
+        const decryptedCardholder = crypt.decrypt(derived, PRIVATE_KEY_IV, cardholder) as string
+        const decryptedCompany = crypt.decrypt(derived, PRIVATE_KEY_IV, company) as string
+        // note that the card digits should only be retrieved when we actively need them, for example when we need to verify
+        // wether a card is legit or not or something like that.
+         cards.push({ id, cardholder: decryptedCardholder, company: decryptedCompany, digits, last_digits, card_type, created_at })
+    }
 
-    return { session, cards }
+    const {data: contacts} = await supabase.from("contact").select().eq("original_account_id", accountDetails.data![0].id);
+
+    return { session, cards, account: accountDetails.data![0], contacts: contacts }
 }

@@ -16,6 +16,8 @@ declare global {
     supabase: SupabaseClient<Database>
   }
 
+  type AvailableCurrencies = "USD" | "EUR" | "CAD" | "AUD" | "GBP" | "NOK" | "JPY" | "IDR" | "DKK" | "SEK" | "MXN"
+
   namespace Resources {
     interface ICard {
       id: string

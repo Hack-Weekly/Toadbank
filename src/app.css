@@ -6,3 +6,8 @@
 body {
     font-family: 'Mukta', sans-serif;
 }
+
+.active {
+    background-color: #507DBC;
+    color: white;
+}
