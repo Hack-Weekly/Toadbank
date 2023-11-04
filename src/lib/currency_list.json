@@ -1,0 +1,14 @@
+[
+    { "code": "USD", "name": "US Dollar" },
+    { "code": "EUR", "name": "Euro" },
+    { "code": "CAD", "name": "Canadian Dollar" },
+    { "code": "AUD", "name": "Australian Dollar" },
+    { "code": "GBP", "name": "British Pound Sterling" },
+    { "code": "NOK", "name": "Norwegian Krone" },
+    { "code": "JPY", "name": "Japanese Yen" },
+    { "code": "IDR", "name": "Indonesian Rupiah" },
+    { "code": "DKK", "name": "Danish Krone" },
+    { "code": "SEK", "name": "Swedish Krona" },
+    { "code": "MXN", "name": "Mexican Peso" }
+  ]
+  

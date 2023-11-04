@@ -14,6 +14,6 @@ export const actions: Actions = {
 
     if (error) return fail(error.status as number, { message: error.message, success: false, email, error: "supabase" })
 
-    throw redirect(303, "/dashboard")
+    throw redirect(303, "/")
   }
 }
