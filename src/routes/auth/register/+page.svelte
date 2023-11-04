@@ -5,7 +5,6 @@
 
   export let form: ActionData
 
-  $: if (form) console.log(form)
 </script>
 
 <section class="min-w-full min-h-screen flex bg-white">

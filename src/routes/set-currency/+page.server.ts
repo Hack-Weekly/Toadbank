@@ -17,12 +17,9 @@ export const actions: Actions = {
             let converted: number = 0
             if (accountData && accountData[0]) {
               // get default currency which is set 
-              console.log(accountData[0].balance)
               const from = Currencies.setDineroObject(accountData[0].balance as number, accountData[0].currency as AvailableCurrencies)
-              console.log(from)
                 if (from) {
                    converted = Currencies.conversion(from, currency as AvailableCurrencies)
-                   console.log(converted)
                 }
             }
             const ibanCountryCode = currency.split("").slice(0, 2).join("")

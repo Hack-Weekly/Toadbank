@@ -31,7 +31,6 @@ export const actions: Actions = {
       const { id: receiverAccountId, balance: receiverBalance, currency: receiverCurrency } = receiverData[0]
 
       if (senderAccountId === receiverAccountId) return fail(403, { message: "User cannot deposit into his/her own account!", success: false })
-      console.log(amountToBeSent)
       const from = Currencies.setDineroObject(amountToBeSent, senderCurrency as AvailableCurrencies)
 
       // convert sent to receivers currency
@@ -60,11 +59,9 @@ export const actions: Actions = {
       })
 
       if (transactionErr) {
-        console.error(transactionErr)
         throw error(500, { message: "Something occured during the transaction process!" })
       }
 
-       console.log(transactionData)
     }
   }
 }
