@@ -4,12 +4,10 @@
 
     export let data: PageServerData
 
-    // $: if (form) console.log(form)
     let contacts: Array<null>;
     if(data.contacts) {
 
         contacts = data.contacts;
-        console.log(contacts);
     }
 
     function formatDate(time: string) {

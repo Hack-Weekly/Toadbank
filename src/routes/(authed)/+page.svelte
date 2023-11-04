@@ -2,13 +2,14 @@
     import { fade } from 'svelte/transition';
     import { page } from "$app/stores";
     import { goto } from "$app/navigation";
-
-    console.log($page.data)
-    let contacts: Array<Null>
+    
+    let contacts: Array<null>
+    let account;
     if ($page.data.contacts) contacts = $page.data.contacts
+    if ($page.data.account) account = $page.data.account
     let tabs = [
-		{ name: "Debit card", card_number: "**** **** **** 2345", balance: "18,986.00" },
-		{ name: "Credit card", card_number: "**** **** **** 1234", balance: "1,768.00" },
+		{ name: "Debit card", card_number: "**** **** **** 2345", balance: account.balance },
+		{ name: "Credit card", card_number: "**** **** **** 1234", balance: account.balance },
 	]
     let selected = tabs[0].name;
 
@@ -58,7 +59,7 @@
         </div>
     </div>
     <div class="col-span-1 lg:col-span-3 flex flex-col">
-        b
+        
     </div>
     <div class="col-span-1 flex flex-col mt-24">
         <div class="flex justify-between items-center">

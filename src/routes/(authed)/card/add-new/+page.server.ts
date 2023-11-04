@@ -29,7 +29,6 @@ export const actions: Actions = {
       async function insertCardId (v: object) {
         const { error, data } = await supabase.from("account").update(v).eq("user_id", userId)
         if (error) return fail(500, { message: "Internal server error, something occurred while linking card to account!", success: false })
-        console.log("Successfully linked card to account!")
       }
 
       switch (type.toLowerCase()) {

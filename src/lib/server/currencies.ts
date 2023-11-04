@@ -39,8 +39,6 @@ class Currencies {
     let convertedAmount: any
     const currentCurrency = from.toJSON().currency.code
     const converted = currencyConversionMap[currentCurrency as AvailableCurrencies]
-
-    console.log(converted)
     // O(n^2) solution you guys can improve it if you want
     
     for (const x in converted) {

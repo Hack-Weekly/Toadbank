@@ -29,11 +29,8 @@ export const DELETE: RequestHandler = async ({ url, locals: { supabase, getSessi
         break
     }
 
-    console.log("redirecting")
-
     return json({ status: 302, url: "/card/add-new" })
   } catch (e) {
-      console.log("error", e)
       return new Response(`${e}`)
   }
 }
