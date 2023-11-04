@@ -7,8 +7,6 @@
     export let form: ActionData
     const currencies = currency_list
 
-
-    $: if (form) console.log(form)
 </script>
 <section class="container mx-auto">
     <div class="flex justify-between items-center gap-12 lg:gap-24 mt-12 min-w-full px-6 lg:px-0">

@@ -8,8 +8,6 @@ export const load: PageServerLoad = async ({ url, locals: { getSession, supabase
   const cid = url.searchParams.get("cid") || null
   const { error: err, data } = await supabase.from("card").select().eq("id", cid)
   
-  if (err) console.error(err)
-
   if (!data || !data![0]) throw error(404, { message: "Card Not Found!" })
   const card = data[0] as Resources.ICard
   const { crypt, derived } = await prepareDerived({ getSession, supabase })
@@ -45,9 +43,7 @@ export const actions: Actions = {
       if (data) {
         const encrypted = crypt.encrypt(derived, PRIVATE_KEY_IV, data)
         const { error, data: c } = await supabase.from("card").update({ [field]: encrypted }).eq("id", cid)
-        console.log(c)
         if (error) return fail(500, { message: error.message, success: false })
-        console.log(`Updated field ${field} for card ${cid}`)
       }
     }
 
